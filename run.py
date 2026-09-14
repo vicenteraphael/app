@@ -1,11 +1,8 @@
-import logging_config
-
 from flask import Flask
-from middleware import verificar_sessao, finalizar_requisicao
-from auth import auth
-from routes import main
 
-app = Flask(__name__)
+from app import *
+
+app = Flask(__name__, template_folder='app/templates')
 app.secret_key = "chave-secreta"
 
 # Middleware
@@ -14,7 +11,10 @@ app.teardown_request(finalizar_requisicao)
 
 # Blueprints
 app.register_blueprint(auth)
-app.register_blueprint(main)
+app.register_blueprint(cookies)
+app.register_blueprint(erros)
+app.register_blueprint(flash_messages)
+app.register_blueprint(logs)
 
 if __name__ == "__main__":
     app.run(debug=True)

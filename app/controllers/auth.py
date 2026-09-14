@@ -1,5 +1,5 @@
 from flask import Blueprint, request, session, redirect, render_template
-from data import astronautas
+from app.models.dados import astronautas
 
 auth = Blueprint("auth", __name__)
 
