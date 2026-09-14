@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel</title>
+</head>
+<body>
+    <h1>Painel de Controle Espacial</h1>
+
+    {% with mensagens = get_flashed_messages(with_categories=true) %}
+        {% for categoria, mensagem in mensagens %}
+            {% if categoria == 'sucesso' %}
+                <div>{{ mensagem }}</div>
+            {% endif %}
+        {% endfor %}
+    {% endwith %}
+</body>
+</html>
